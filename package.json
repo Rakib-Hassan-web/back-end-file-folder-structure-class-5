@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Rakib-Hassan-web/back-end-file-folder-structure-class-5#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.2.1",
     "mongodb": "^7.0.0",
     "mongoose": "^9.0.0"
