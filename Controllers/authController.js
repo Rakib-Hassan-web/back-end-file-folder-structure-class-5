@@ -1,6 +1,23 @@
 
 
-const registration  = (req,res)=>{
+const registration  = async (req,res)=>{
+
+    const{ name ,email ,password} = req.body
+
+
+if(!name) return res.send('name is required')
+if(!email) return res.send('email is required')
+if(!password) return res.send('password is required')
+
+    const existinguser = await userschema.findOne({email})
+
+    if(existinguser) return res.send('User already exists')
+
+   
+        await newUser.save()
+
+
+
     res.send("registration successful")
 }
 
