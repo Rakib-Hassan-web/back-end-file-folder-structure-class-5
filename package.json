@@ -17,5 +17,8 @@
     "url": "https://github.com/Rakib-Hassan-web/back-end-file-folder-structure-class-5/issues"
   },
   "homepage": "https://github.com/Rakib-Hassan-web/back-end-file-folder-structure-class-5#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
