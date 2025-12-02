@@ -1,6 +1,9 @@
 
 const express = require('express')
+const dbConfig = require('./dbConfig')
 const app = express()
+
+dbConfig()
 
 
 app.get('/', (req, res) => {
