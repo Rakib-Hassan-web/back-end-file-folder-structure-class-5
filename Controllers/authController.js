@@ -21,7 +21,7 @@ const registration = async (req, res) => {
             password
         });
 
-     newUser.save(); 
+        await newUser.save(); 
 
         res.status(201).send("registration successful");
 
