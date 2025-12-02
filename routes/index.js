@@ -1,8 +1,26 @@
 const express =require( 'express')
+const { registration, login } = require('../Controllers/authController')
 
-const route = express.Router()
+const routee = express.Router()
 
 
-route.get('/' ,(req,res)=>{
+routee.get('/' ,(req,res)=>{
     res.send("hello world")
 })
+
+
+
+
+routee.post('/register' , registration )
+
+
+routee.post('/login' , login )
+
+
+
+
+
+
+
+
+module.exports =routee

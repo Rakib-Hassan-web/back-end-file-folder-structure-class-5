@@ -2,10 +2,14 @@
 const express = require('express')
 const dbConfig = require('./dbConfig')
 const UserSchema = require('./models/UserSchema')
+
+const routee = require('./routes')
 const app = express()
 
 dbConfig()
 UserSchema()
+
+app.use(routee)
 
 
 app.get('/', (req, res) => {
