@@ -45,6 +45,8 @@ const login  = async (req,res)=>{
         const existingUser =  await User.findOne({ email });
 
         if(!existingUser) return res.send('user dose not exist')
+
+            if(existingUser.password !==password) return res.send('password does not match')
    
 
 
