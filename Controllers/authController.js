@@ -21,7 +21,10 @@ const registration = async (req, res) => {
             password
         });
 
-   
+     newUser.save(); 
+
+        res.status(201).send("registration successful");
+
     } catch (error) {
         console.log(error);
         res.status(500).send("Something went wrong");
