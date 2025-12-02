@@ -33,8 +33,23 @@ const registration = async (req, res) => {
 
 
 
-const login  = (req,res)=>{
-    res.send("login successful")
+const login  = async (req,res)=>{
+
+       const {  email, password } = req.body;
+
+      
+        if (!email) return res.status(400).send('email is required');
+        if (!password) return res.status(400).send('password is required');
+
+
+        const existingUser =  await User.findOne({ email });
+
+        if(!existingUser) return res.send('user dose not exist')
+   
+
+
+
+    res.send({ success: "login successful"  , existingUser })
 }
 
 
