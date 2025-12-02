@@ -1,20 +1,19 @@
 
 const express = require('express')
 const dbConfig = require('./dbConfig')
-const UserSchema = require('./models/UserSchema')
+
 
 const routee = require('./routes')
+const User = require('./models/UserSchema')
 const app = express()
+app.use(express.json())
 
 dbConfig()
-UserSchema()
+User()
 
 app.use(routee)
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
 app.listen(4000, () => {
   console.log("server is running on port 4000")

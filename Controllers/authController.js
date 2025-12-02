@@ -1,27 +1,36 @@
+const User = require("../models/UserSchema")
 
 
-const registration  = async (req,res)=>{
+const registration = async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
 
-    const{ name ,email ,password} = req.body
+        if (!name) return res.status(400).send('name is required');
+        if (!email) return res.status(400).send('email is required');
+        if (!password) return res.status(400).send('password is required');
 
+        const existingUser = await User.findOne({ email });
 
-if(!name) return res.send('name is required')
-if(!email) return res.send('email is required')
-if(!password) return res.send('password is required')
+        if (existingUser) {
+            return res.status(400).send('User already exists');
+        }
 
-
-        const newUser =new userschema({
+        const newUser = new User({
             name,
             email,
             password
-        })
+        });
 
-        await newUser.save()
+        await newUser.save(); 
 
+        res.status(201).send("registration successful");
 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Something went wrong");
+    }
+};
 
-    res.send("registration successful")
-}
 
 
 const login  = (req,res)=>{

@@ -11,4 +11,5 @@ password:String
 
 
 
-module.exports = mongoose.model('User', userschema);
+const User = mongoose.model('User', userschema);
+module.exports = User;

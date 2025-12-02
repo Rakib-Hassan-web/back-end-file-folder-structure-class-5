@@ -11,7 +11,7 @@ routee.get('/' ,(req,res)=>{
 
 
 
-routee.post('/register' , registration )
+routee.post('/registration' , registration )
 
 
 routee.post('/login' , login )
