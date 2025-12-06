@@ -3,13 +3,19 @@ const User = require("../models/UserSchema")
 const bcrypt = require("bcrypt");
 const registration = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const {
+            name,
+            email,
+            password
+        } = req.body;
 
         if (!name) return res.status(400).send('name is required');
         if (!email) return res.status(400).send('email is required');
         if (!password) return res.status(400).send('password is required');
 
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({
+            email
+        });
 
         if (existingUser) {
             return res.status(400).send('User already exists');
@@ -55,15 +61,21 @@ const login = async (req, res) => {
 
     if (!existingUser) return res.send('user dose not exist')
 
-    if (existingUser.password !== password) return res.send('password does not match')
+    // if (existingUser.password !== password) return res.send('password does not match')
 
 
+    const match = await bcrypt.compare(password, existingUser.password);
 
+    if (!match) {
+        return res.send('password does not match')
+    }
+
+    else{
 
     res.send({
         success: "login successful",
         existingUser
-    })
+    })}
 }
 
 
